@@ -25,6 +25,12 @@ export class TodoService {
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
   }
 
+  // deleteTodo
+  deleteTodo(todo: Todo): Observable<Todo> {
+    const url = `${this.todosUrl}/${todo.id}`;
+    return this.http.delete<Todo>(url, httpOptions);
+  }
+
   // Ao tocar no botão de conclusão, envia uma requisição de cadastro
   toggleCompleted(todo: Todo): Observable<any> {
     const url = `${this.todosUrl}/${todo.id}`;
